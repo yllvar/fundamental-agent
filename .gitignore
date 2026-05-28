@@ -1,0 +1,100 @@
+# --- Secrets (MUST stay out of git) ---
+.env
+*.env
+config/slack_webhook.txt
+config/slack_config.json
+github_token_backup.txt
+aws-credentials.json
+.aws/
+
+# --- Runtime / generated directories ---
+__pycache__/
+logs/
+cache/
+output/
+streamlit_articles/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# --- Python artifacts ---
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Testing / coverage ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# --- Notebooks ---
+.ipynb_checkpoints
+
+# --- Environments ---
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+Pipfile.lock
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+
+# --- Temporary files ---
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.backup
+
+# --- Databases ---
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Archives ---
+*.zip
+*.tar.gz
+*.rar

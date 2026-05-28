@@ -1,0 +1,89 @@
+{
+  "model_id": "deepseek-v4-flash",
+  "temperature": 0.7,
+  "max_tokens": 4000,
+
+  "data_collection": {
+    "stock_symbols": [
+      "AAPL", "GOOGL", "MSFT", "TSLA", "NVDA",
+      "SPY", "QQQ", "AMZN", "META", "NFLX"
+    ],
+    "economic_indicators": [
+      "^GSPC", "^DJI", "^IXIC", "^VIX", "^TNX"
+    ],
+    "forex_pairs": [
+      "EURUSD=X", "GBPUSD=X", "USDJPY=X", "AUDUSD=X",
+      "USDCAD=X", "NZDUSD=X", "USDCHF=X",
+      "EURJPY=X", "GBPJPY=X", "EURGBP=X"
+    ],
+    "news_feeds": [
+      "https://feeds.bloomberg.com/markets/news.rss",
+      "https://feeds.reuters.com/reuters/businessNews",
+      "https://rss.cnn.com/rss/money_latest.rss",
+      "https://feeds.marketwatch.com/marketwatch/topstories/"
+    ],
+    "update_interval_minutes": 30,
+    "max_news_items": 20
+  },
+
+  "article_generation": {
+    "default_types": ["market_summary", "stock_focus"],
+    "default_length": "medium",
+    "max_articles_per_run": 5,
+    "supported_types": [
+      "market_summary",
+      "stock_focus",
+      "economic_outlook",
+      "sector_analysis"
+    ],
+    "length_options": ["short", "medium", "long"]
+  },
+
+  "optimization": {
+    "default_focus": ["readability", "seo", "engagement", "compliance"],
+    "quality_threshold": 80,
+    "seo_keywords_min": 3,
+    "readability_target": 75
+  },
+
+  "output": {
+    "directory": "output",
+    "save_html": true,
+    "save_json": true,
+    "save_markdown": false,
+    "backup_days": 30,
+    "create_index": true
+  },
+
+  "schedule": {
+    "enabled": false,
+    "data_collection_interval": 30,
+    "article_generation_interval": 60,
+    "optimization_interval": 120,
+    "cleanup_interval": 1440
+  },
+
+  "logging": {
+    "level": "INFO",
+    "file_rotation": true,
+    "max_file_size_mb": 10,
+    "backup_count": 5,
+    "console_output": true
+  },
+
+  "performance": {
+    "max_concurrent_requests": 3,
+    "request_timeout_seconds": 30,
+    "retry_attempts": 3,
+    "cache_enabled": true,
+    "cache_duration_minutes": 15
+  },
+
+  "content_rules": {
+    "min_word_count": 200,
+    "max_word_count": 2000,
+    "require_conclusion": true,
+    "require_tags": true,
+    "max_tags": 10
+  }
+}
