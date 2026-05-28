@@ -40,10 +40,23 @@ def format_session_briefing(
         if atr:
             line += f"  ATR {atr:.1f}p"
 
+        hist_parts = []
         if prev_close_data and symbol in prev_close_data:
             prev = prev_close_data[symbol]
             vs_prev = (price - prev) / (data.get("pip_value", 0.0001)) if data.get("pip_value") else 0
-            line += f"\n   └ from previous session: {vs_prev:+.1f}p"
+            hist_parts.append(f"prev: {vs_prev:+.1f}p")
+
+        percentile = data.get("historical_percentile")
+        if percentile is not None:
+            hist_parts.append(f"p{percentile} of range")
+
+        dow = data.get("dow_bias_today")
+        if dow is not None:
+            weekday = datetime.now().strftime("%a")
+            hist_parts.append(f"{weekday} avg: {dow:+.2f}%")
+
+        if hist_parts:
+            line += "\n   └ " + " | ".join(hist_parts)
 
         lines.append(line)
 

@@ -9,6 +9,7 @@ from typing import Dict, Optional
 
 from data_monitoring.data_collector import EconomicDataCollector
 from config.forex_config import MARKET_SESSIONS, get_previous_session
+from services import historical_data_service as hds
 
 logger = logging.getLogger(__name__)
 
@@ -45,10 +46,17 @@ def get_session_snapshot(session_name: str) -> Dict[str, Dict]:
                     )
                     atr = round(float(tr.rolling(14).mean().iloc[-1]) / _get_pip_value(symbol), 1)
 
+                percentile = hds.get_percentile_rank(symbol, data.get("current_price", 0))
+                dow_bias = hds.get_day_of_week_bias(symbol)
+                today_name = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][datetime.now().weekday()]
+                dow_today = dow_bias.get(today_name) if dow_bias else None
+
                 result[symbol] = {
                     **data,
                     "atr": atr,
                     "pip_value": _get_pip_value(symbol),
+                    "historical_percentile": percentile,
+                    "dow_bias_today": dow_today,
                 }
         except Exception as e:
             logger.warning(f"Failed to fetch {symbol} for {session_name}: {e}")

@@ -13,6 +13,7 @@ logs/
 cache/
 output/
 streamlit_articles/
+data/historical/
 *.egg-info/
 .eggs/
 dist/
