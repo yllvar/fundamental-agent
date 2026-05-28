@@ -19,7 +19,7 @@ load_dotenv()
 from config.settings import load_config
 from agents.orchestrator_strand import main_orchestrator, StrandContext
 from notifications.telegram_notifier import TelegramNotifier, AlertPriority
-from event_detection_slack_system import EventMonitoringSystem
+from event_detection_system import EventMonitoringSystem
 from agents.conversation_agent import ConversationStrand
 from conversation_manager import ConversationManager
 from response_formatter import format_help_message, format_error_message

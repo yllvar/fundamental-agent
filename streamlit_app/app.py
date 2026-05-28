@@ -15,7 +15,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from streamlit_app.visualization_utils import ChartGenerator, NewsImageGenerator, AdGenerator
 from agents.orchestrator_strand import main_orchestrator, StrandContext
-from event_detection_slack_system import EventMonitoringSystem
+from event_detection_system import EventMonitoringSystem
 from config.settings import load_config
 
 
